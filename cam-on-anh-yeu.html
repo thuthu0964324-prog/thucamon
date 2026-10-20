@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lá thư cảm ơn gửi anh yêu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playpen+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --bg1:#fff1f4; --bg2:#ffd6e2; --paper:#fffaf6; --ink:#5b2b3b; --muted:#92606f;
+  --rose:#e4527a; --rose-d:#c63a63; --blush:#ffb3c7; --line:#f2bfce; --shadow:rgba(198,58,99,.28);
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg1:#2a1520; --bg2:#42202f; --paper:#3a2230; --ink:#ffe6ec; --muted:#e0b2c0;
+    --rose:#ff7d9d; --rose-d:#e0587c; --blush:#a8506b; --line:#6b3a4c; --shadow:rgba(0,0,0,.45);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg1:#2a1520; --bg2:#42202f; --paper:#3a2230; --ink:#ffe6ec; --muted:#e0b2c0;
+  --rose:#ff7d9d; --rose-d:#e0587c; --blush:#a8506b; --line:#6b3a4c; --shadow:rgba(0,0,0,.45);
+}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100%; display:grid; place-items:center; padding:28px 18px; overflow-x:hidden;
+  background:linear-gradient(160deg,var(--bg1),var(--bg2)) fixed; color:var(--ink);
+  font-family:"Playpen Sans","Segoe Print","Comic Sans MS",cursive,sans-serif;
+}
+.float{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.float span{position:absolute;bottom:-40px;color:var(--rose);opacity:0;animation:rise linear infinite}
+@keyframes rise{0%{transform:translateY(0) rotate(0);opacity:0}12%{opacity:.4}90%{opacity:.25}100%{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+main{position:relative;z-index:1;width:100%;max-width:440px;text-align:center}
+
+/* phong thư */
+.stage[hidden],.letter[hidden]{display:none}
+.env{position:relative;display:block;margin:0 auto;width:min(300px,82vw);aspect-ratio:3/2;border:0;background:none;padding:0;cursor:pointer;perspective:800px;filter:drop-shadow(0 14px 22px var(--shadow));transition:transform .3s}
+.env:hover{transform:translateY(-3px) rotate(-1deg)}
+.env:focus-visible,.hug:focus-visible{outline:3px solid var(--rose-d);outline-offset:4px;border-radius:12px}
+.env>span{position:absolute;display:block}
+.env-back{inset:0;background:var(--rose-d);border-radius:12px}
+.env-paper{left:8%;right:8%;top:8%;bottom:8%;background:var(--paper);border-radius:6px;transition:transform .7s .35s}
+.env-front{inset:0;background:var(--rose);border-radius:12px;clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%)}
+.env-flap{inset:0;background:var(--rose);border-radius:12px 12px 0 0;clip-path:polygon(0 0,100% 0,50% 60%);transform-origin:50% 0;transition:transform .6s;z-index:3}
+.seal{left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:var(--paper);color:var(--rose-d);display:grid!important;place-items:center;font-size:24px;z-index:4;box-shadow:0 3px 8px var(--shadow);transition:opacity .3s}
+.env.open .env-flap{transform:rotateX(180deg)}
+.env.open .env-paper{transform:translateY(-38%)}
+.env.open .seal{opacity:0}
+.hint{margin:26px 0 0;color:var(--muted);font-size:1rem;line-height:1.6}
+
+/* lá thư */
+.letter{background:var(--paper);border-radius:22px;padding:34px 26px 30px;box-shadow:0 18px 40px var(--shadow);border:1.5px solid var(--line);animation:unfold .7s cubic-bezier(.2,.8,.2,1)}
+@keyframes unfold{from{transform:translateY(40px) scale(.94);opacity:0}to{transform:none;opacity:1}}
+.letter h1{margin:0 0 10px;font-family:Pacifico,"Brush Script MT",cursive;font-weight:400;font-size:clamp(2rem,9vw,2.6rem);color:var(--rose);line-height:1.25;outline:none}
+.to{margin:0 0 18px;color:var(--muted);font-weight:600}
+.body p{margin:0 0 14px;line-height:1.85;font-size:1.02rem;text-align:left}
+.reasons{list-style:none;margin:22px 0;padding:0;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.reasons li{padding:8px 14px;border-radius:999px;border:1.5px dashed var(--rose);font-size:.92rem;color:var(--ink)}
+.reasons li::before{content:"♥ ";color:var(--rose)}
+.sign{margin:6px 0 24px;font-weight:600;color:var(--rose-d)}
+.hug{position:relative;border:0;cursor:pointer;font:inherit;font-weight:600;font-size:1.05rem;color:#fff;background:linear-gradient(135deg,var(--rose),var(--rose-d));padding:14px 28px;border-radius:999px;box-shadow:0 8px 18px var(--shadow);transition:transform .15s}
+.hug:active{transform:scale(.95)}
+.burst{position:fixed;z-index:10;pointer-events:none;font-size:20px;color:var(--rose)}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .float{display:none}
+}
+</style>
+</head>
+<body>
+<div class="float" id="float" aria-hidden="true"></div>
+<main>
+  <section class="stage" id="stage">
+    <button class="env" id="env" aria-label="Mở lá thư">
+      <span class="env-back"></span>
+      <span class="env-paper"></span>
+      <span class="env-front"></span>
+      <span class="env-flap"></span>
+      <span class="seal">♥</span>
+    </button>
+    <p class="hint" id="hint"></p>
+  </section>
+
+  <article class="letter" id="letter" hidden>
+    <h1 id="title" tabindex="-1"></h1>
+    <p class="to" id="to"></p>
+    <div class="body" id="body"></div>
+    <ul class="reasons" id="reasons"></ul>
+    <p class="sign" id="sign"></p>
+    <button class="hug" id="hug"></button>
+  </article>
+</main>
+
+<script>
+// ✏️ Sửa nội dung ở đây cho đúng với hai bạn nhé
+const LETTER = {
+  hint: "Có một lá thư nhỏ em viết cho anh. Chạm vào để mở nhé",
+  title: "Cảm ơn anh yêu",
+  to: "Gửi anh yêu của em,",
+  body: [
+    "Cảm ơn anh vì đã luôn ở bên em, cả những ngày vui lẫn những ngày em chẳng muốn nói gì.",
+    "Cảm ơn vì những tin nhắn “ăn cơm chưa em?” giản dị mà lần nào cũng làm em mỉm cười.",
+    "Có anh, những điều bình thường nhất cũng trở thành kỷ niệm đáng nhớ."
+  ],
+  reasons: ["Luôn lắng nghe em", "Kiên nhẫn với em", "Làm em cười mỗi ngày", "Là nơi em thấy bình yên"],
+  sign: "Yêu anh nhiều lắm, em ♥",
+  hug: "Gửi anh một cái ôm",
+  hugDone: "Em ôm anh thật chặt rồi nè"
+};
+
+const $ = id => document.getElementById(id);
+const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+$("hint").textContent = LETTER.hint;
+$("title").textContent = LETTER.title;
+$("to").textContent = LETTER.to;
+$("sign").textContent = LETTER.sign;
+$("hug").textContent = LETTER.hug;
+LETTER.body.forEach(t => { const p = document.createElement("p"); p.textContent = t; $("body").appendChild(p); });
+LETTER.reasons.forEach(t => { const li = document.createElement("li"); li.textContent = t; $("reasons").appendChild(li); });
+
+// tim bay nền
+for (let i = 0; i < 14; i++) {
+  const s = document.createElement("span");
+  s.textContent = "♥";
+  s.style.left = Math.random() * 100 + "%";
+  s.style.fontSize = 14 + Math.random() * 22 + "px";
+  s.style.animationDuration = 12 + Math.random() * 12 + "s";
+  s.style.animationDelay = -Math.random() * 20 + "s";
+  $("float").appendChild(s);
+}
+
+// mở thư
+$("env").addEventListener("click", () => {
+  $("env").classList.add("open");
+  $("env").disabled = true;
+  setTimeout(() => {
+    $("stage").hidden = true;
+    $("letter").hidden = false;
+    $("title").focus({ preventScroll: true });
+  }, calm ? 0 : 1100);
+});
+
+// ôm: tim bung ra
+$("hug").addEventListener("click", () => {
+  const r = $("hug").getBoundingClientRect();
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  if (!calm) {
+    for (let i = 0; i < 20; i++) {
+      const h = document.createElement("span");
+      h.className = "burst";
+      h.textContent = "♥";
+      h.style.left = cx + "px"; h.style.top = cy + "px";
+      h.style.fontSize = 14 + Math.random() * 18 + "px";
+      document.body.appendChild(h);
+      const a = Math.random() * Math.PI * 2, d = 70 + Math.random() * 110;
+      h.animate(
+        [{ transform: "translate(-50%,-50%) scale(.4)", opacity: 1 },
+         { transform: `translate(calc(-50% + ${Math.cos(a) * d}px), calc(-50% + ${Math.sin(a) * d - 40}px)) scale(1.1)`, opacity: 0 }],
+        { duration: 900 + Math.random() * 500, easing: "cubic-bezier(.2,.7,.3,1)" }
+      ).onfinish = () => h.remove();
+    }
+  }
+  $("hug").textContent = LETTER.hugDone;
+});
+</script>
+</body>
+</html>
